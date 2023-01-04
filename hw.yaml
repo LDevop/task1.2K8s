@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: hello_world
+  name: hello-world
+  namespace: itrspace 
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: hello_world
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: hello_world
+    spec:
+      containers:
+      - image: crccheck/hello-world
+        name: hello-world
+        ports:
+        - containerPort: 8000
